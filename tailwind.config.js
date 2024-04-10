@@ -21,6 +21,11 @@ export default {
       brandYellow: "#DBAC2C",
       brandYellowLight: "#F1E9C9",
     },
+    fontFamily: {
+      sans: ["ui-sans-serif", "system-ui"],
+      roboto: ["Roboto", "sans-serif"],
+      baloo: ["baloo", "sans-serif"],
+    },
     extend: {},
   },
   plugins: [],
