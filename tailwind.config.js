@@ -24,7 +24,7 @@ export default {
     fontFamily: {
       sans: ["ui-sans-serif", "system-ui"],
       roboto: ["Roboto", "sans-serif"],
-      baloo: ["baloo", "sans-serif"],
+      balsamiq: ["Balsamiq Sans", "sans-serif"],
     },
     extend: {},
   },

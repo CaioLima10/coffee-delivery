@@ -3,7 +3,7 @@ import { MapPin, ShoppingCart } from "phosphor-react";
 
 export function Header() {
   return (
-    <header className="w-screen max-w-5xl h-24 flex items-center justify-center ">
+    <header className="w-screen max-w-6xl h-24 flex items-center justify-center bg-baseBackground">
       <div className="w-full flex items-center justify-between">
         <img className="w-20 h-10" src={CoffeeLogoImg} alt="LOGO-DO-COFFEE" />
         <div className=" flex items-center gap-3">
