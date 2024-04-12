@@ -1,3 +1,9 @@
+import { CompleteOrderForm } from "./components/completeOrderForm";
+
 export function CompleteOrderPage() {
-  return <div>complete</div>;
+  return (
+    <div>
+      <CompleteOrderForm />
+    </div>
+  );
 }
