@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface InfoWithIconProps {
   icon: ReactNode;
-  text: string | ReactNode;
+  text?: string | ReactNode;
   className: string;
 }
 
