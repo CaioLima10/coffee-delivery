@@ -23,7 +23,7 @@ export function CoffeeCard({ coffee }: CoffeCardData) {
     <div className="mt-10">
       <div
         className="w-full rounded-tr-[36px] rounded-bl-[36px] p-6 
-        flex flex-col items-center justify-center bg-baseCard pt-0 shadow-md"
+        flex flex-col items-center justify-center bg-baseCard pt-0 "
       >
         <img src={`/coffees/${coffee.photo}`} alt="COFFEE" className="-mt-8" />
         <div className="w-full flex items-center justify-center gap-1 mt-4 mb-6 flex-wrap ">
