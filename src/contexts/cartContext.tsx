@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { Coffee } from "../pages/home/components/coffeeCard";
 import { produce } from "immer";
 
@@ -16,6 +16,7 @@ interface CartContextData {
   ) => void;
 
   removeCoffeeCart: (cartItemId: number) => void;
+  cartItemTotal: number;
 }
 
 interface CartProviderProps {
@@ -25,7 +26,14 @@ interface CartProviderProps {
 export const CartContext = createContext({} as CartContextData);
 
 export function CartProvider({ children }: CartProviderProps) {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+    const storedCoffeeDelivery = localStorage.getItem("CoffeeDelivery");
+
+    if (storedCoffeeDelivery) {
+      return JSON.parse(storedCoffeeDelivery);
+    }
+    return [];
+  });
 
   const cartQuantity = cartItems.length;
 
@@ -43,6 +51,10 @@ export function CartProvider({ children }: CartProviderProps) {
     });
     setCartItems(newCart);
   }
+
+  const cartItemTotal = cartItems.reduce((total, cartItem) => {
+    return total + cartItem.price * cartItem.quantity;
+  }, 0);
 
   function changeCartItemQuantity(
     cartItemId: number,
@@ -74,6 +86,10 @@ export function CartProvider({ children }: CartProviderProps) {
     setCartItems(newCart);
   }
 
+  useEffect(() => {
+    localStorage.setItem("CoffeeDelivery", JSON.stringify(cartItems));
+  }, [cartItems]);
+
   return (
     <CartContext.Provider
       value={{
@@ -82,6 +98,7 @@ export function CartProvider({ children }: CartProviderProps) {
         cartQuantity,
         changeCartItemQuantity,
         removeCoffeeCart,
+        cartItemTotal,
       }}
     >
       {children}
