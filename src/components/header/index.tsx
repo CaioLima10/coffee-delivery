@@ -1,8 +1,11 @@
 import { NavLink } from "react-router-dom";
 import CoffeeLogoImg from "../../assets/coffee-delivery-logo.svg";
 import { MapPin, ShoppingCart } from "phosphor-react";
+import { useCart } from "../../hooks/useCart";
 
 export function Header() {
+  const { cartQuantity } = useCart();
+
   return (
     <header
       className="w-screen max-w-6xl h-24 flex items-center justify-center 
@@ -20,13 +23,20 @@ export function Header() {
             <MapPin size={20} weight="fill" />
             <span>Porto Alegre, RS</span>
           </button>
-          <NavLink
-            to="/completeOrder"
-            className="flex items-center justify-center gap-8 min-w-8 h-10 
+          <div className="relative">
+            <NavLink
+              to="/completeOrder"
+              className="flex items-center justify-center gap-8 min-w-8 h-10 
                   rounded-md border-none px-2 text-base relative bg-brandYellow/20 text-brandYellow"
-          >
-            <ShoppingCart size={20} weight="fill" />
-          </NavLink>
+            >
+              <ShoppingCart size={20} weight="fill" />
+            </NavLink>
+            {cartQuantity > 0 && (
+              <span className="absolute flex items-center justify-center text-baseWhite p-0.5 w-8 h-8 text-sm -top-4 -right-4 bg-brandYellowDark rounded-full">
+                {cartQuantity}
+              </span>
+            )}
+          </div>
         </div>
       </div>
     </header>

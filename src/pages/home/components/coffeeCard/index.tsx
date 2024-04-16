@@ -2,6 +2,8 @@ import { ShoppingCart } from "phosphor-react";
 import { InfoWithIcon } from "../../../../components/infoWithIcon";
 import { QuantityInput } from "../../../../components/quantity/input";
 import { formatMoney } from "../../../../utils/formatMoney";
+import { useCart } from "../../../../hooks/useCart";
+import { useState } from "react";
 
 export interface Coffee {
   id: number;
@@ -17,7 +19,26 @@ interface CoffeCardData {
 }
 
 export function CoffeeCard({ coffee }: CoffeCardData) {
+  const { addCoffeeToCart } = useCart();
+
+  const [quantity, setQuantity] = useState(1);
+
+  function handleIncrease() {
+    setQuantity((prevState) => prevState + 1);
+  }
+  function handleDecrease() {
+    setQuantity((prevState) => prevState - 1);
+  }
+
   const formatPrice = formatMoney(coffee.price);
+
+  function handleAddToCart() {
+    const coffeeToAdd = {
+      ...coffee,
+      quantity,
+    };
+    addCoffeeToCart(coffeeToAdd);
+  }
 
   return (
     <div className="mt-10">
@@ -51,9 +72,19 @@ export function CoffeeCard({ coffee }: CoffeCardData) {
             </p>
           </span>
           <div className="flex items-center gap-2">
-            <QuantityInput />
+            <QuantityInput
+              onIncrease={handleIncrease}
+              onDecrease={handleDecrease}
+              quantity={quantity}
+            />
             <InfoWithIcon
-              icon={<ShoppingCart size={20} weight="fill" />}
+              icon={
+                <ShoppingCart
+                  size={20}
+                  weight="fill"
+                  onClick={handleAddToCart}
+                />
+              }
               className="bg-brandPurpleDark hover:bg-brandPurple text-baseWhite rounded-md w-8 h-8 
               flex items-center justify-center cursor-pointer"
             />

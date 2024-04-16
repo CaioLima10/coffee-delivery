@@ -5,7 +5,7 @@ export function ConfirmationSelected() {
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between text-sm">
         <p>Total itens</p>
-        <span>R$ 9,90</span>
+        <span></span>
       </div>
       <div className="flex items-center justify-between text-sm">
         <p>Entrega</p>
