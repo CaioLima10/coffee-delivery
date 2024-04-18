@@ -17,6 +17,7 @@ interface CartContextData {
 
   removeCoffeeCart: (cartItemId: number) => void;
   cartItemTotal: number;
+  cleanCart: () => void;
 }
 
 interface CartProviderProps {
@@ -90,6 +91,10 @@ export function CartProvider({ children }: CartProviderProps) {
     localStorage.setItem("CoffeeDelivery", JSON.stringify(cartItems));
   }, [cartItems]);
 
+  function cleanCart() {
+    setCartItems([]);
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -99,6 +104,7 @@ export function CartProvider({ children }: CartProviderProps) {
         changeCartItemQuantity,
         removeCoffeeCart,
         cartItemTotal,
+        cleanCart,
       }}
     >
       {children}
