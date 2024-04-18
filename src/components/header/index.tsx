@@ -32,7 +32,10 @@ export function Header() {
               <ShoppingCart size={20} weight="fill" />
             </NavLink>
             {cartQuantity > 0 && (
-              <span className="absolute flex items-center justify-center text-baseWhite p-0.5 w-8 h-8 text-sm -top-4 -right-4 bg-brandYellowDark rounded-full">
+              <span
+                className="absolute flex items-center justify-center text-baseWhite 
+                    p-0.5 w-8 h-8 text-sm -top-4 -right-4 bg-brandYellowDark rounded-full"
+              >
                 {cartQuantity}
               </span>
             )}
