@@ -53,7 +53,7 @@ export function AddressForm() {
               {...register("complement")}
             />
             <span
-              className="text-base italic text-baseLabel p-[11.5px] bg-baseInput
+              className="text-base italic text-baseLabel p-[8px] bg-baseInput
                   border border-t-baseButton border-b-baseButton border-r-baseButton border-l-baseInput 
                   rounded-tr-md rounded-br-md
               "

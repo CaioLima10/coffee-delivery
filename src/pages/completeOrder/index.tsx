@@ -4,6 +4,7 @@ import { SelectedCoffees } from "./components/selectedCoffees";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../../hooks/useCart";
 
 enum PaymentMethods {
   credit = "credit",
@@ -36,6 +37,7 @@ export function CompleteOrderPage() {
   });
 
   const { handleSubmit } = confirmOrderForm;
+  const { cleanCart } = useCart();
 
   const navigate = useNavigate();
 
@@ -43,6 +45,7 @@ export function CompleteOrderPage() {
     navigate("/orderConfirmed", {
       state: data,
     });
+    cleanCart();
   };
 
   return (

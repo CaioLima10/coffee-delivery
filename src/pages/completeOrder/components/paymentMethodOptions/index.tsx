@@ -30,8 +30,8 @@ export function PaymentMethodOptions() {
     ?.message as unknown as string;
 
   return (
-    <section className="flex flex-col items-center gap-2 mt-8">
-      <div className="flex">
+    <section className="flex flex-col items-center mt-8">
+      <div className="flex gap-8 items-start">
         {Object.entries(paymentMethods).map(([key, { label, icon, value }]) => (
           <PaymentMethodInput
             key={key}

@@ -1,9 +1,10 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ImgConfirmedIllustration from "../../assets/Illustration.svg";
 import { InfoWithIcon } from "../../components/infoWithIcon";
 import { Timer, MapPin, CurrencyDollar } from "phosphor-react";
 import { OrderData } from "../completeOrder";
 import { paymentMethods } from "../completeOrder/components/paymentMethodOptions";
+import { useEffect } from "react";
 
 interface LocationProps {
   state: OrderData;
@@ -11,6 +12,16 @@ interface LocationProps {
 
 export function OrderConfirmed() {
   const { state } = useLocation() as unknown as LocationProps;
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!state) {
+      navigate("/");
+    }
+  }, [navigate, state]);
+
+  if (!state) return <></>;
 
   return (
     <div className="max-w-6xl container flex flex-col gap-6 mb-6 bg-baseBackground">
