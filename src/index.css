@@ -12,3 +12,21 @@
 .container {
   height: calc(100vh - 120px);
 }
+
+body {
+  height: 100vh; /* Define a altura do corpo como 100% da altura da viewport */
+  overflow-y: scroll; /* Torna o corpo scrollável verticalmente */
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+  cursor: pointer;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #fafafa;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #8047f8;
+}
