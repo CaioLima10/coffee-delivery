@@ -6,7 +6,7 @@ import { MapPinLine, CurrencyDollar } from "phosphor-react";
 
 export function CompleteOrderForm() {
   return (
-    <form className="w-full">
+    <div className="w-full">
       <h1 className="font-2xl font-bold font-balsamiq text-baseTitle my-6">
         Complete seu pedido
       </h1>
@@ -26,6 +26,6 @@ export function CompleteOrderForm() {
       >
         <PaymentMethodOptions />
       </SectionTitle>
-    </form>
+    </div>
   );
 }

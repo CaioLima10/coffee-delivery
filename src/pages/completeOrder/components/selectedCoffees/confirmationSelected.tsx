@@ -31,6 +31,7 @@ export function ConfirmationSelected() {
         className="bg-brandYellow text-baseWhite w-full mt-2 rounded-md 
       uppercase font-bold h-12 text-sm hover:bg-brandYellow/90 duration-300"
         disabled={cartQuantity <= 0}
+        type="submit"
       >
         Confirmar pedido
       </Button>

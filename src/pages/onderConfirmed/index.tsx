@@ -1,8 +1,17 @@
+import { useLocation } from "react-router-dom";
 import ImgConfirmedIllustration from "../../assets/Illustration.svg";
 import { InfoWithIcon } from "../../components/infoWithIcon";
 import { Timer, MapPin, CurrencyDollar } from "phosphor-react";
+import { OrderData } from "../completeOrder";
+import { paymentMethods } from "../completeOrder/components/paymentMethodOptions";
+
+interface LocationProps {
+  state: OrderData;
+}
 
 export function OrderConfirmed() {
+  const { state } = useLocation() as unknown as LocationProps;
+
   return (
     <div className="max-w-6xl container flex flex-col gap-6 mb-6 bg-baseBackground">
       <div className="mt-8">
@@ -27,10 +36,12 @@ export function OrderConfirmed() {
             }
             className="flex text-sm"
             text={`Entrega em`}
-            subtext={"Farrapos - Porto Alegre RS"}
+            subtext={`${state.district}- ${state.city}- ${state.uf}`}
           >
             {" "}
-            <strong>Rua João Daniel Marinelli, 102</strong>
+            <strong>
+              {state.street}, {state.number}
+            </strong>
           </InfoWithIcon>
 
           <InfoWithIcon
@@ -55,7 +66,9 @@ export function OrderConfirmed() {
             }
             text="Previsão de entrega"
             subtext={
-              <span style={{ fontWeight: "bold" }}>Cartão de Credito</span>
+              <span style={{ fontWeight: "bold" }}>
+                {paymentMethods[state.paymentMethod].label}
+              </span>
             }
             className="flex text-sm"
           />
